@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🪄 Memory Vault 🪄</h1>
+
+  <div class="card-container">
+    <!-- Year Card -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <p>👨‍🌾FARM LIFE😍</p>
+        </div>
+        <div class="card-back">
+          <img src="farm.png" alt="Preview" />
+          <button onclick="showModal()">Unlock</button>
+        </div>
+      </div>
+    </div>
+    <!-- Add more .card blocks for other years -->
+  </div>
+
+  <!-- Modal Password Box -->
+  <div id="passwordModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Enter Password to Unlock Memories</h3>
+      <input type="password" id="passwordInput" placeholder="Enter password" />
+      <br/>
+      <button onclick="checkPassword()">Unlock</button>
+    </div>
+  </div>
+
+  <!-- Secret Gallery -->
+  <div class="secret-gallery" id="secretGallery">
+    <h1>🔓</h1>
+    <h2>Welcome to the Vault!</h2>
+    <img src="Gemini_Generated_Image_mg7rsmg7rsmg7rsm.png" />
+
+    <img src="Gemini_Generated_Image_yip6mcyip6mcyip6.png" />
+    <img src="Gemini_Generated_Image_d9whu4d9whu4d9wh.png" />
+  </div>
+
+<div class="add-card-section">
+  <input type="text" id="cardTitle" placeholder="Enter card name">
+  <button id="addCardBtn">➕ Add Card</button>
+</div>
+
+<div id="cardContainer"></div>
+
+  <script src="script.js"></script>
+  <!-- Particle Container -->
+<div id="particles-js"></div>
+
+<!-- Scripts -->
+<script src="particles.js"></script>
+<script>
+  particlesJS.load('particles-js', 'particles-config.json', function () {
+    console.log('Particles loaded 🎉');
+  });
+</script>
+
+</body>
+</html>

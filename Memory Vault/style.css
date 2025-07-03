@@ -1,0 +1,382 @@
+/* === Memory Vault Full CSS === */
+
+/* === Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(#000010, #1a0033);
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+h1, h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff0026;
+}
+
+/* === Header Title Glow === */
+#main-title {
+  animation: glow 1.5s infinite alternate;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ccff;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ccff; }
+  to { text-shadow: 0 0 20px #00ccff, 0 0 30px #ff00ff; }
+}
+
+/* === Card Section === */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card {
+  width: 250px;
+  height: 180px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg) scale(1.05);
+  box-shadow: 0 0 20px #fff7, 0 0 50px #ff0a;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-front {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  font-size: 1.5rem;
+}
+
+.card-back {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotateY(180deg);
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-back img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.card-back button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #ff00cc;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* === Background & Animation === */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  animation: twinkle 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes twinkle {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+/* === Modal === */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #222;
+  padding: 2rem;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 20px #00f7ff;
+}
+
+.modal-content input,
+.modal-content button {
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin: 1rem;
+  font-weight: bold;
+}
+
+.modal-content button {
+  background: #00ffcc;
+  border: none;
+  cursor: pointer;
+}
+
+/* === Secret Star Gallery === */
+.secret-gallery {
+  display: none;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.secret-gallery img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 15px;
+  border: 2px solid white;
+  box-shadow: 0 0 10px #ffffff44, 0 0 20px #00f0ff55;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  animation: starTwinkle 3s ease-in-out infinite;
+  filter: brightness(1.1) saturate(1.2);
+}
+
+.secret-gallery img:hover {
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #ffffffcc, 0 0 60px #00f0ffcc;
+  transform: scale(1.1);
+  z-index: 3;
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    box-shadow: 0 0 10px #ffffff33, 0 0 20px #00f0ff44;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px #ffffffaa, 0 0 40px #00f0ffaa;
+    transform: scale(1.05);
+  }
+}
+
+/* === Sparkle Effect === */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #ff00cc, #00ccff);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
+  animation: sparkleFade 0.6s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes sparkleFade {
+  0% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* === Card Input Section === */
+.add-card-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#cardTitle {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+#addCardBtn {
+  padding: 10px 20px;
+  background-color: #00ccff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#addCardBtn:hover {
+  background-color: #0099cc;
+}
+
+.card-box {
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 0 25px #00ccff66;
+  border: 1px solid #00ccff33;
+}
+
+.card-box h2 {
+  color: #fff;
+  text-align: center;
+}
+
+.memory-uploader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.memory-uploader input[type="file"],
+.memory-uploader input[type="text"] {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.9rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.memory-uploader button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background: #00ccff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.memory-uploader button:hover {
+  background: #0099cc;
+}
+
+.card-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.memory-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.memory-wrapper img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ffffff33, 0 0 40px #00ccff66;
+  transition: transform 0.3s ease;
+}
+
+.memory-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+.memory-caption {
+  text-align: center;
+  margin-top: 5px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* === Responsive === */
+@media screen and (max-width: 600px) {
+  .memory-uploader {
+    flex-direction: column;
+  }
+
+  .memory-uploader input,
+  .memory-uploader button,
+  .card-gallery img {
+    width: 100%;
+  }
+
+  .memory-wrapper img {
+    width: 90vw;
+    height: auto;
+  }
+}
